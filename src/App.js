@@ -26,8 +26,8 @@ export default function App() {
     Cookies.remove("token");
     setIsSignedIn(false);
   };
-  console.log({isSignedIn});
-  console.log(getToken())
+  // console.log({isSignedIn});
+  // console.log(getToken())
   return (
     <div className="App">
       <BrowserRouter>
