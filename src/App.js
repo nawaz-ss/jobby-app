@@ -15,7 +15,7 @@ export default function App() {
   const [isSignedIn, setIsSignedIn] = useState(null);
   
   useEffect(()=>{
-    getToken ? setIsSignedIn(true) : setIsSignedIn(false);
+    getToken() ? setIsSignedIn(true) : setIsSignedIn(false);
   }, [])
 
   const signIn = () => {
@@ -26,11 +26,12 @@ export default function App() {
     Cookies.remove("token");
     setIsSignedIn(false);
   };
-  //console.log({isSignedIn})
+  console.log({isSignedIn});
+  console.log(getToken())
   return (
     <div className="App">
       <BrowserRouter>
-        {isSignedIn && <Header />}
+        {isSignedIn && <Header signOut={signOut} />}
         <Routes>
           <Route path="/" 
             element={
