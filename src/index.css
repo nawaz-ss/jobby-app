@@ -32,3 +32,13 @@ code {
 .login-page-logo{
   width: 40%;
 }
+
+.nav-logo{
+  width: 80%;
+}
+
+.nav-menu{
+  text-decoration: none !important;
+  color: #ffffff;
+  font-size: 15px;
+}

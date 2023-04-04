@@ -40,7 +40,7 @@ function Login({signIn}) {
   }
 
   useEffect(() => {
-    if(getToken){
+    if(getToken()){
       navigate("/")
     }
   },[])
@@ -60,7 +60,7 @@ function Login({signIn}) {
         <Button variant="primary" type="submit" className='mt-3'>
           Submit
         </Button>
-        {errorMsg && <span>{errorMsg}</span>}
+        {errorMsg && <span className='text-danger'>{errorMsg}</span>}
       </form>
     </div>
   )
