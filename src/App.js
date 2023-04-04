@@ -1,25 +1,63 @@
-import logo from './logo.svg';
+import { useEffect, useState } from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
 import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Login from './components/Login';
+import Home from './components/Home';
+import Jobs from './components/Jobs';
+import Header from './components/Header';
+import Protected from './components/Protected';
+import Cookies from 'js-cookie';
+import { getToken } from './utils/CommonUtils';
 
-function App() {
+export default function App() {
+  const [isSignedIn, setIsSignedIn] = useState(null);
+  
+  useEffect(()=>{
+    getToken ? setIsSignedIn(true) : setIsSignedIn(false);
+  }, [])
+
+  const signIn = () => {
+    setIsSignedIn(true);
+  };
+
+  const signOut = () => {
+    Cookies.remove("token");
+    setIsSignedIn(false);
+  };
+  //console.log({isSignedIn})
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <BrowserRouter>
+        {isSignedIn && <Header />}
+        <Routes>
+          <Route path="/" 
+            element={
+              <Protected isSignedIn={isSignedIn}>
+                <Home />
+              </Protected>
+            } 
+          />
+          <Route path="/login" element={<Login signIn={signIn} />} />
+          <Route
+            path="/"
+            element={
+              <Protected isSignedIn={isSignedIn}>
+                <Home />
+              </Protected>
+            }
+          />
+          <Route
+            path="/jobs"
+            element={
+              <Protected isSignedIn={isSignedIn}>
+                <Jobs />
+              </Protected>
+            }
+          />
+        </Routes>
+      </BrowserRouter>
     </div>
-  );
+  )
 }
-
-export default App;
