@@ -2,6 +2,8 @@
   height: 100vh;
   background-color: #000000;
   color: #f8fafc;
+  display: flex;
+  flex-direction: column;
 }
 
 .App-logo {

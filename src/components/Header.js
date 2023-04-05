@@ -11,7 +11,7 @@ function Header({signOut}) {
     signOut();
   }
   return (
-    <Navbar bg="dark" expand="lg">
+    <Navbar bg="dark" expand="md">
       <div className='container d-flex align-items-center justify-content-between w-100'>
         <Link to="/">
           <img src={ImageAssets.LOGO} className='nav-logo' alt='nav-logo' />
