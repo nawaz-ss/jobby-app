@@ -47,3 +47,8 @@
   align-items: center;
   justify-content: center;
 }
+
+.search-icon-box{
+  width: 40px;
+  background-color: #282c34;
+}
