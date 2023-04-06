@@ -87,7 +87,7 @@ function Jobs() {
           <div>
             {jobsData.map((job, i) => {
               return (
-                <div className='container job-card p-3 mb-3' key={i} onClick={() => navigate(`/jobs/${job.id}`)}>
+                <div className='container job-card cursor-pointer p-3 mb-3' key={i} onClick={() => navigate(`/jobs/${job.id}`)}>
                   <div className='d-flex'>
                     <img src={job.company_logo_url} alt='company-logo' className='company-logo' />
                     <div className='flex-grow-1 ms-3'>

@@ -1,6 +1,6 @@
 //React
 import { useEffect, useState } from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 //styles
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -15,6 +15,7 @@ import Cookies from 'js-cookie';
 //utils
 import { getToken } from './utils/CommonUtils';
 import JobPage from './components/JobPage';
+import PageNotFound from './components/PageNotFound';
 
 export default function App() {
   const [isSignedIn, setIsSignedIn] = useState(null);
@@ -38,7 +39,7 @@ export default function App() {
       <BrowserRouter>
         {isSignedIn && <Header signOut={signOut} />}
         <Routes>
-          <Route path="/login" element={<Login signIn={signIn} />} />
+          <Route exact path="/login" element={<Login signIn={signIn} />} />
           <Route
             exact path="/"
             element={
@@ -63,6 +64,7 @@ export default function App() {
               </Protected>
             }
           />
+          <Route path='*' element={<PageNotFound />}/>
         </Routes>
       </BrowserRouter>
     </div>
