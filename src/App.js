@@ -18,7 +18,7 @@ import JobPage from './components/JobPage';
 import PageNotFound from './components/PageNotFound';
 
 export default function App() {
-  const [isSignedIn, setIsSignedIn] = useState(null);
+  const [isSignedIn, setIsSignedIn] = useState(getToken() ? true : false);
   
   useEffect(()=>{
     getToken() ? setIsSignedIn(true) : setIsSignedIn(false);
