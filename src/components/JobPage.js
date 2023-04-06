@@ -8,13 +8,11 @@ import { CiLocationOn } from "react-icons/ci";
 
 function JobPage() {
     const [jobDetails, setJobDetails] = useState(null);
-    const [jobId, setJobId] = useState(null)
-    const urlParams = useParams();
+    const [jobId, setJobId] = useState(null);
     const navigate = useNavigate();
+    const urlParams = useParams();
 
     const getJobDetails = async () => {
-        // console.log('inside job details');
-        //const params = useParams();
         const url = `${BASE_URL}/jobs/${urlParams.jobId}`;
         const options = {
             headers: {
@@ -32,13 +30,17 @@ function JobPage() {
     }
 
     useEffect(() => {
-        // console.log(urlParams.jobId);
         setJobId(urlParams.jobId)
     },[]);
 
     useEffect(() => {
         getJobDetails()
     }, [jobId])
+
+    const jumpToJob = (id) => {
+        setJobId(id);
+        navigate(`/jobs/${id}`);
+    }
 
     const jobDetailsCard = () => {
         if (jobDetails) {
@@ -59,7 +61,7 @@ function JobPage() {
                     <hr className='mt-0' />
                     <div className='d-flex align-items-center'>
                         <h4 className='me-auto'>Description</h4>
-                        <FaShareSquare className='cursor-pointer' style={{}} />
+                        <a href={jobDetails?.job_details?.company_website_url} target='_blank'><FaShareSquare className='cursor-pointer' /></a>
                     </div>
                     <p className='mb-3'>{jobDetails.job_details.job_description}</p>
 
@@ -97,7 +99,7 @@ function JobPage() {
                 <div className='row'>
                     {jobDetails?.similar_jobs?.map((job, i) => {
                         return (
-                            <div className='col-12 col-md-4' key={i} onClick={() => navigate(`/jobs/${job.id}`)}>
+                            <div className='col-12 col-md-4' key={i} onClick={() => jumpToJob(job.id)}>
                                 <div className='container job-card p-3 mb-3'>
                                     <div className='d-flex'>
                                         <img src={job.company_logo_url} alt='company-logo' className='company-logo' />

@@ -87,6 +87,9 @@ code {
 .job-card{
   background-color: #272727;
   border-radius: 8px;
+}
+
+.cursor-pointer{
   cursor: pointer;
 }
 
