@@ -48,6 +48,7 @@ code {
   width: 150px;
   border: 1px solid white;
   border-radius: 5px;
+  flex-shrink: 0;
 }
 
 .home-container{
@@ -69,4 +70,58 @@ code {
 .home-text-description{
   font-size: 24px;
   line-height: 40px;
+}
+
+.profile-container{
+  background-image: url('https://assets.ccbp.in/frontend/react-js/profile-bg.png');
+  background-position: center;
+  background-size: cover;
+  min-height: 200px;
+  border-radius: 12px;
+}
+
+.hr-line{
+  height: 2px;
+}
+
+.job-card{
+  background-color: #272727;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.company-logo{
+  height: 56px;
+  width: 56px;
+}
+
+.job-card-title{
+  font-size: 18px;
+}
+
+.job-card-description{
+  font-size: 15px;
+}
+
+.star-icon{
+  color: gold;
+}
+
+.search-box{
+  background-color: transparent;
+  border: none;
+  outline: none;
+  color: #ffffff;
+}
+
+.profile-name{
+  font-size: 24px;
+  font-weight: 600;
+  color: #4546e5;
+}
+
+.profile-description{
+  font-size: 16px;
+  font-weight: 500;
+  color: #64748b;
 }

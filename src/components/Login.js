@@ -31,7 +31,7 @@ function Login({signIn}) {
     //console.log('API DATA :', data1);
 
     if (response.ok === true) {
-      Cookies.set('token', data1['jwt_token']);
+      Cookies.set('token', data1['jwt_token'], {expires: 1});
       signIn();
       navigate("/");
     } else {
